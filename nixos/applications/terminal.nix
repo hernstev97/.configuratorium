@@ -1,13 +1,12 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    oh-my-posh
     nano
     sherlock
-    atuin
     git
     git-lfs
     btop
     ffmpeg_6
-    neofetch
     freshfetch
     fastfetch
     neovim
@@ -15,5 +14,10 @@
     unzip
     cabextract
     gh
+    fzf
+    bat
+    fd
+    tldr
+    zoxide
   ];
 }

@@ -19,8 +19,11 @@
     obs-studio
     vscode
     cavalier
+    brave
+    davinci-resolve
 
     python39
+    nodejs_23
   ];
 
   programs.firefox.enable = true;

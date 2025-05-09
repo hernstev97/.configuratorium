@@ -1,27 +1,31 @@
-{ config, ... }:
-{
-    # networking config
-    # add here
+{config, ...}: {
+  # networking config
+  # add here
 
-    # configure bootloader device
-    boot.loader.grub.device = "/dev/sda";
+  # configure bootloader device
+  boot.loader.grub.device = "/dev/sda";
 
-    # time zone
-    time.timeZone = "Europe/Amsterdam";
+  # time zone
+  time.timeZone = "Europe/Amsterdam";
 
-    # keyboard layout
-    services.xserver.xkb.layout = "de";
+  # keyboard layout
+  services.xserver.xkb.layout = "de";
 
-    # bluetooth
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
-    services.blueman.enable = true;
+  # bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
-    # --- drivers ---
-    # nvidia
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    hardware.nvidia.open = true;
-    services.xserver.videoDrivers = [ "nvidia" ]; 
+  # --- drivers ---
+  # nvidia
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.open = true;
+  services.xserver.videoDrivers = ["nvidia"];
 
-    boot.initrd.kernelModules = [ "nvidia_drm" "nvidia_modeset" ];
-}  
+  boot.initrd.kernelModules = ["nvidia_drm" "nvidia_modeset"];
+
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 16777216;
+    "fs.file-max" = 524288;
+  };
+}
